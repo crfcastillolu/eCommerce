@@ -8,14 +8,28 @@ function Producto(nNombre, nPrecio, nExistencias) {
 	this.existencias = nExistencias;
 }
 
-Producto.prototype.agregarExistencia = function(nExistencias) {
+Producto.prototype.agregarExistencias = function(nExistencias) {
 	if (nExistencias < 0) {
-		return "Ingrese un número positivo"
+		return "Ingrese un número positivo";
+	} else if (typeof nExistencias !== 'number') {
+		return "Ingrese un número";
 	} else {
 		this.existencias += nExistencias;
 		return this.existencias;
 	}
+}
 
+Producto.prototype.quitarExistencias = function(nExistencias) {
+	if (nExistencias < 0) {
+		return "Ingrese un número positivo";
+	} else if (typeof nExistencias !== 'number') {
+		return "Ingrese un número";
+	} else if (this.existencias < nExistencias) {
+		return "No hay suficientes productos en existencias";
+	} else {
+		this.existencias -= nExistencias;
+		return this.existencias;
+	}
 }
 
 function Usuario(nNombre, nCorreo, nContrasenia) {
