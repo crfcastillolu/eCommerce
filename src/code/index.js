@@ -9,28 +9,25 @@ var Almacen = function(nNombre) {
 							new Producto ("05","pes16","105000","5","pc","sports")
 						];
 
-	// this.almacenExistencias = [
-	// 				new Producto("the witcher 3",150000,3,"xbox"),
-	// 				new Producto("fifa16",125000, 12,"play station"),
-	// 				new Producto("pes16", 115000,10,"xbox")
-	// 				]
-	// this.buscarExistencias = function(buscar) {
-	// 	for (var i = 0; i < almacenExistencias.length; i++) {
-	// 		if (almacenExistencias[i].nombre === buscar){
-	// 			return almacenExistencias[i];
-	// 		}
-	// 	}
-	// }
+}
+
+Almacen.prototype.convertirALowerCase = function(nNombre){
+	return nNombre.toLowerCase();
 }
 
 Almacen.prototype.buscarStock = function(nNombre) {
 	var resultados = []
-	for (var i = 0; i < this.productosStock.length; i++) {
-		if (this.productosStock[i].nombre === nNombre){
-			resultados.push(this.productosStock[i]);
+	if (typeof nNombre === 'string') {
+		for (var i = 0; i < this.productosStock.length; i++) {
+			if (this.productosStock[i].nombre === nNombre){
+				resultados.push(this.productosStock[i]);
+			} 
 		} 
+		return resultados;		
+	} else {
+		return "el argumento no es un string"
 	}
-	return resultados;
+
 };
 
 Almacen.prototype.quitarStock = function(nId) {};
@@ -45,17 +42,22 @@ var Producto = function(nId, nNombre, nPrecio, nExistencias, nConsola, nGenero) 
 	this.genero = nGenero;
 }
 
-function Carrito() {
-	this.productos = [];
-}
+// var Carrito = function () {
+// 	this.productos = [];
+// }
 
-function Usuario(nNombre, nCorreo, nContrasenia) {
+var Usuario = function(nNombre, nCorreo, nContrasenia) {
 	this.nombre = nNombre;
 	this.correo = nCorreo;
 	this.contrasenia = nContrasenia;
+	this.carrito = [];
 }
 
-Usuario.prototype.agregarACarrito = function(nId) {};
+Usuario.prototype.agregarACarrito = function(nArregloResultados) {
+	numeroDeProductos = this.carrito.push(nArregloResultados)
+	return this.carrito[0];
+};
+
 Usuario.prototype.quitarDelCarrito = function(nId) {};
 Usuario.prototype.checkIn = function(nCarrito) {};
 

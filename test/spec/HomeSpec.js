@@ -10,17 +10,37 @@ describe("Pruebas del e-Commerce", function() {
 
     it("Debería buscar productos con nombre pes16 y retornar un arreglo de longitud tres", function() {
       var tiendaVideojuegos = new Almacen("videoJuegos");
-      var resultado = tiendaVideojuegos.buscarStock("pes16");
+      var resultado = tiendaVideojuegos.buscarStock("pes16");      
       expect(resultado.length).toBe(3);          
     });
 
     it("Debería buscar productos con nombre pes16 y retornar un arreglo de longitud tres", function() {
       var tiendaVideojuegos = new Almacen("videoJuegos");
-      var resultado = tiendaVideojuegos.buscarStock("pes16");
+      var bajas = tiendaVideojuegos.convertirALowerCase("pES16")
+      var resultado = tiendaVideojuegos.buscarStock(bajas);
       expect(resultado.length).toBe(3);          
     });
 
+    it("Debería buscar productos con un valor 'number' y retornar un string que diga que no es un argumento válido", function() {
+      var tiendaVideojuegos = new Almacen("videoJuegos");
+      var resultado = tiendaVideojuegos.buscarStock(16);
+      expect(resultado).toBe("el argumento no es un string");          
+    });
+
   });
+
+  describe("Poner producto de stock en carrito", function() {
+
+    it("Debería poner tres productos seleccionados del stock en el carrito", function() {
+      var tiendaVideojuegos = new Almacen("videoJuegos");
+      var buscarStock = tiendaVideojuegos.buscarStock("pes16");
+        console.log('objetos encontrados: ' + buscarStock);
+      cliente = new Usuario("Felipe","fcastillo@gmail.com",1234);
+      var resultado = cliente.agregarACarrito(buscarStock);
+      expect(resultado.length).toBe(3);          
+    });
+
+  });  
 
   // describe("Buscar en el arreglo", function() {
 

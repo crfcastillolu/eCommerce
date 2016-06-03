@@ -4,9 +4,10 @@ var Almacen = function(nNombre) {
 	this.nombre = nNombre;
 	this.productosStock = [
 							new Producto ("01","halo","150000","12","xbox","shooter"),
-							new Producto ("02","fifa16","125000","8","playstation","sports"),
-							new Producto ("03","pes16","115000","7","xbox","sports"),
-							new Producto ("04","pes16","115000","9","playstation","sports")
+							new Producto ("02","pes16","115000","7","xbox","sports"),
+							new Producto ("03","fifa16","125000","8","playstation","sports"),
+							new Producto ("04","pes16","115000","9","playstation","sports"),
+							new Producto ("05","pes16","105000","5","pc","sports")
 						];
 
 	// this.almacenExistencias = [
@@ -30,9 +31,7 @@ Almacen.prototype.buscarStock = function(nNombre) {
 			resultados.push(this.productosStock[i]);
 		} 
 	}
-	console.log(resultados);
 	return resultados;
-
 };
 
 Almacen.prototype.quitarStock = function(nId) {};
@@ -61,8 +60,6 @@ Usuario.prototype.agregarACarrito = function(nId) {};
 Usuario.prototype.quitarDelCarrito = function(nId) {};
 Usuario.prototype.checkIn = function(nCarrito) {};
 
-var tiendaVideojuegos = new Almacen("videoJuegos");
-tiendaVideojuegos.buscarStock("pes16");
 
 // Producto.prototype.agregarExistencias = function(nExistencias) {
 // 	if (nExistencias < 0) {
