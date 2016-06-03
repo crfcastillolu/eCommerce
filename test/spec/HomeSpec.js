@@ -8,17 +8,17 @@ describe("Pruebas del e-Commerce", function() {
       expect(tiendaVideojuegos.productosStock[0].id).toBe("01");          
     });
 
-    it("Debería buscar productos con nombre pes16 y retornar un arreglo de longitud tres", function() {
+    it("Debería buscar productos con nombre pes16 y retornar un arreglo de longitud dos", function() {
       var tiendaVideojuegos = new Almacen("videoJuegos");
       var resultado = tiendaVideojuegos.buscarStock("pes16");      
-      expect(resultado.length).toBe(3);          
+      expect(resultado.length).toBe(2);          
     });
 
-    it("Debería buscar productos con nombre pes16 y retornar un arreglo de longitud tres", function() {
+    it("Debería buscar productos con nombre pes16 y retornar un arreglo de longitud dos", function() {
       var tiendaVideojuegos = new Almacen("videoJuegos");
       var bajas = tiendaVideojuegos.convertirALowerCase("pES16")
       var resultado = tiendaVideojuegos.buscarStock(bajas);
-      expect(resultado.length).toBe(3);          
+      expect(resultado.length).toBe(2);          
     });
 
     it("Debería buscar productos con un valor 'number' y retornar un string que diga que no es un argumento válido", function() {
@@ -33,10 +33,15 @@ describe("Pruebas del e-Commerce", function() {
 
     it("Debería poner tres productos seleccionados del stock en el carrito", function() {
       var tiendaVideojuegos = new Almacen("videoJuegos");
-      var buscarStock = tiendaVideojuegos.buscarStock("pes16");
+      var buscarStock = tiendaVideojuegos.buscarStock("farcry4");
         console.log('objetos encontrados: ' + buscarStock);
       cliente = new Usuario("Felipe","fcastillo@gmail.com",1234);
       var resultado = cliente.agregarACarrito(buscarStock);
+        console.log(resultado);
+        console.log('existencias producto 07: ' + tiendaVideojuegos.productosStock[5].existencias);
+        console.log('existencias producto 08: ' + tiendaVideojuegos.productosStock[6].existencias);
+        console.log('existencias producto 09: ' + tiendaVideojuegos.productosStock[7].existencias);
+        console.log('existencias producto 07: ' + cliente.carrito[0].existencias);
       expect(resultado.length).toBe(3);          
     });
 

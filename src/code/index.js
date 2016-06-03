@@ -3,10 +3,13 @@ var Almacen = function(nNombre) {
 	this.nombre = nNombre;
 	this.productosStock = [
 							new Producto ("01","halo","150000","12","xbox","shooter"),
-							new Producto ("02","pes16","115000","7","xbox","sports"),
 							new Producto ("03","fifa16","125000","8","playstation","sports"),
-							new Producto ("04","pes16","115000","9","playstation","sports"),
-							new Producto ("05","pes16","105000","5","pc","sports")
+							new Producto ("04","pes16","115000","0","playstation","sports"),
+							new Producto ("05","pes16","105000","14","xbox","sports"),
+							new Producto ("06","pes16","99000","12","pc","sports"),
+							new Producto ("07","farcry4","122000","10","playstation","fps"),
+							new Producto ("08","farcry4","117000","7","xbox","fps"),
+							new Producto ("09","farcry4","110500","3","pc","fps")
 						];
 
 }
@@ -19,7 +22,8 @@ Almacen.prototype.buscarStock = function(nNombre) {
 	var resultados = []
 	if (typeof nNombre === 'string') {
 		for (var i = 0; i < this.productosStock.length; i++) {
-			if (this.productosStock[i].nombre === nNombre){
+			if (this.productosStock[i].nombre === nNombre && this.productosStock[i].existencias > 0 ){
+				this.quitarProductoDeStock(this.productosStock[i])
 				resultados.push(this.productosStock[i]);
 			} 
 		} 
@@ -27,8 +31,12 @@ Almacen.prototype.buscarStock = function(nNombre) {
 	} else {
 		return "el argumento no es un string"
 	}
-
 };
+
+Almacen.prototype.quitarProductoDeStock = function(nExistencias) {
+		nExistencias.existencias -= 1
+		return nExistencias.existencias
+}
 
 Almacen.prototype.quitarStock = function(nId) {};
 Almacen.prototype.checkOut = function(nCarrito) {};
@@ -54,8 +62,10 @@ var Usuario = function(nNombre, nCorreo, nContrasenia) {
 }
 
 Usuario.prototype.agregarACarrito = function(nArregloResultados) {
-	numeroDeProductos = this.carrito.push(nArregloResultados)
-	return this.carrito[0];
+	for (var i = 0; i < nArregloResultados.length; i++) {
+		this.carrito.push(nArregloResultados[i])
+	}
+	return this.carrito;
 };
 
 Usuario.prototype.quitarDelCarrito = function(nId) {};
@@ -73,18 +83,7 @@ Usuario.prototype.checkIn = function(nCarrito) {};
 // 	}
 // }
 
-// Producto.prototype.quitarExistencias = function(nExistencias) {
-// 	if (nExistencias < 0) {
-// 		return "Ingrese un número positivo";
-// 	} else if (typeof nExistencias !== 'number') {
-// 		return "Ingrese un número";
-// 	} else if (this.existencias < nExistencias) {
-// 		return "No hay suficientes productos en existencias";
-// 	} else {
-// 		this.existencias -= nExistencias;
-// 		return this.existencias;
-// 	}
-// }
+
 
 // Carrito.prototype.buscarExistencias = function(buscar) {
 // 	for (var i = 0; i < almacenExistencias.length; i++) {
