@@ -112,11 +112,22 @@ Usuario.prototype.agregarACarrito = function(nId) {
 				this.carrito.push(producto)
 			} 
 		}
-		console.log("resultados: " + this.carrito);
+
+
+
+		console.log("resultados: " + this.carrito[0].nombre);
 		return this.carrito;
 
 
 };
+
+Usuario.prototype.mostrarCarrito = function(carrito){
+			for (var i = 0; i < carrito[i].length; i++) {
+			console.log("resultados: " + carrito[i].nombre);
+		}
+}
+
+
 
 // Usuario.prototype.agregarACarrito = function(nArregloResultados) {
 // 	for (var i = 0; i < nArregloResultados.length; i++) {
@@ -131,7 +142,6 @@ Usuario.prototype.quitarDelCarrito = function(nArregloResultados, nProducto) {
 			this.carrito.pop();	
 		}
 	}
-	console.log(this.carrito);
 	return this.carrito;
 };
 
@@ -193,10 +203,10 @@ $(document).ready(function() {
       	tiendaVideojuegos.monstrarBusqueda(resultado);
 	      $("button").click(function(){
 	      	nId = this.id
-			// console.log("muestra id: " + this.id);
 	      	var resultado = usuario.agregarACarrito(nId);
-	      	usuario.agregarACarrito(resultado);  	
-	      })
+	      	console.log(resultado)
+	      	usuario.mostrarCarrito(resultado)
+	      	})
       })
 });
 },{}]},{},[1,2]);

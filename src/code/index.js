@@ -111,11 +111,22 @@ Usuario.prototype.agregarACarrito = function(nId) {
 				this.carrito.push(producto)
 			} 
 		}
-		console.log("resultados: " + this.carrito);
+
+
+
+		console.log("resultados: " + this.carrito[0].nombre);
 		return this.carrito;
 
 
 };
+
+Usuario.prototype.mostrarCarrito = function(carrito){
+			for (var i = 0; i < carrito[i].length; i++) {
+			console.log("resultados: " + carrito[i].nombre);
+		}
+}
+
+
 
 // Usuario.prototype.agregarACarrito = function(nArregloResultados) {
 // 	for (var i = 0; i < nArregloResultados.length; i++) {
@@ -130,7 +141,6 @@ Usuario.prototype.quitarDelCarrito = function(nArregloResultados, nProducto) {
 			this.carrito.pop();	
 		}
 	}
-	console.log(this.carrito);
 	return this.carrito;
 };
 
