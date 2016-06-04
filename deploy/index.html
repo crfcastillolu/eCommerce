@@ -15,7 +15,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <!-- jquery library -->
-    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <script src="js/code.js"></script>
 
 </head>
 <body>
@@ -37,9 +38,9 @@
 		          <a class="dropdown-item" href="#">Something else here</a>
 		        </div>
 		      </div>
-		      <input type="text" class="form-control" placeholder="Buscar juego..." aria-label="Text input with dropdown button">
+		      <input type="text" id="inputBuscar" class="form-control" placeholder="Buscar juego..." aria-label="Text input with dropdown button">
 		    <span class="input-group-btn">
-        		<button class="btn btn-success" type="button">Buscar</button>
+        		<button class="btn btn-success" id="botonBuscar" type="button">Buscar</button>
       		</span>
 		    </div> 			
   		</div>
@@ -89,28 +90,11 @@
   </div>
 
   <div class="container">
-  	<div class="row row-no-padding">
-  		<div class="col-xs-12 row-no-padding">
-  			<div class="col-xs-12 col-sm-6 col-lg-4">
-  				<div class="boxGenre">
-  					<h3>Arcade</h3>
-  				</div>
-  			</div>
-  			<div class="col-xs-12 col-sm-6 col-lg-4">
-  				<div class="boxGenre">
-  					<h3>Deportes</h3>
-  				</div>
-  			</div>
-  			<div class="col-xs-12 col-sm-6 col-lg-4">
-  				<div class="boxGenre">
-  					<h3>Estrategia</h3>
-  				</div>
-  			</div>
-  			<div class="col-xs-12 col-sm-6 col-lg-4">
-  				<div class="boxGenre">
-  					<h3>carreras</h3>
-  				</div>
-  			</div>
+  	<div class="row">
+  		<div class="col-xs-12">
+
+        <div id="box" class="boxStyle">
+        </div>
 
   		</div>
   	</div>
