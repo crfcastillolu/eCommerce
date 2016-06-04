@@ -13,7 +13,7 @@ $(document).ready(function() {
       	tiendaVideojuegos.monstrarBusqueda(resultado);
 	      $("button").click(function(){
 	      	nId = this.id
-			console.log("muestra id: " + this.id);
+			// console.log("muestra id: " + this.id);
 	      	var resultado = usuario.agregarACarrito(nId);
 	      	usuario.agregarACarrito(resultado);  	
 	      })

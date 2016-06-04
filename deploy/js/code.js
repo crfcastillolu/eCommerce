@@ -110,10 +110,10 @@ Usuario.prototype.agregarACarrito = function(nId) {
 			if (tiendaVideojuegos.productosStock[i].id === nId){
 				var producto = tiendaVideojuegos.productosStock[i]
 				this.carrito.push(producto)
-				console.log("resultados: " + tiendaVideojuegos.productosStock[i].nombre);
 			} 
-		} 
-		
+		}
+		console.log("resultados: " + this.carrito);
+		return this.carrito;
 
 
 };
@@ -193,7 +193,7 @@ $(document).ready(function() {
       	tiendaVideojuegos.monstrarBusqueda(resultado);
 	      $("button").click(function(){
 	      	nId = this.id
-			console.log("muestra id: " + this.id);
+			// console.log("muestra id: " + this.id);
 	      	var resultado = usuario.agregarACarrito(nId);
 	      	usuario.agregarACarrito(resultado);  	
 	      })
