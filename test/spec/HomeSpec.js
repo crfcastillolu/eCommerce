@@ -42,7 +42,17 @@ describe("Pruebas del e-Commerce", function() {
         console.log('existencias producto 08: ' + tiendaVideojuegos.productosStock[6].existencias);
         console.log('existencias producto 09: ' + tiendaVideojuegos.productosStock[7].existencias);
         console.log('existencias producto 07: ' + cliente.carrito[0].existencias);
-      expect(resultado.length).toBe(3);          
+      expect(resultado.length).toBe(3);
+    });
+
+    it("Debería quitar tres productos del carrito", function() {
+      var tiendaVideojuegos = new Almacen("videoJuegos");
+      var buscarStock = tiendaVideojuegos.buscarStock("farcry4");
+      cliente = new Usuario("Felipe","fcastillo@gmail.com",1234);
+      var carritoConObjetos = cliente.agregarACarrito(buscarStock);
+      var resultado = cliente.quitarDelCarrito(carritoConObjetos, "pc");
+        console.log(resultado[0]);
+      expect(resultado.length).toBe(2);
     });
 
   });  

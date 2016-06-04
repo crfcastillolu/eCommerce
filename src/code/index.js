@@ -11,7 +11,6 @@ var Almacen = function(nNombre) {
 							new Producto ("08","farcry4","117000","7","xbox","fps"),
 							new Producto ("09","farcry4","110500","3","pc","fps")
 						];
-
 }
 
 Almacen.prototype.convertirALowerCase = function(nNombre){
@@ -27,9 +26,9 @@ Almacen.prototype.buscarStock = function(nNombre) {
 				resultados.push(this.productosStock[i]);
 			} 
 		} 
-		return resultados;		
+		return resultados;
 	} else {
-		return "el argumento no es un string"
+		return "el argumento no es un string";
 	}
 };
 
@@ -68,7 +67,15 @@ Usuario.prototype.agregarACarrito = function(nArregloResultados) {
 	return this.carrito;
 };
 
-Usuario.prototype.quitarDelCarrito = function(nId) {};
+Usuario.prototype.quitarDelCarrito = function(nArregloResultados, nProducto) {
+	for (var i = 0; i < nArregloResultados.length; i++) {
+		if(nArregloResultados[i].consola === nProducto){
+			this.carrito.pop();	
+		}
+	}
+	return this.carrito;
+};
+
 Usuario.prototype.checkIn = function(nCarrito) {};
 
 
@@ -92,6 +99,17 @@ Usuario.prototype.checkIn = function(nCarrito) {};
 // 		}
 // 	}
 // }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
